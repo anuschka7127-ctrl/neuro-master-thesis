@@ -1,0 +1,487 @@
+Last login: Mon Apr 27 23:02:06 on ttys000
+(base) anuschkabergmann@mac ~ % python 
+Python 3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print(type(studyset_json))
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    print(type(studyset_json))
+               ^^^^^^^^^^^^^
+NameError: name 'studyset_json' is not defined
+>>> studyset_json = download_file("https://neurostore.org/api/studysets/Cv2LLUqG76W9?nested=true")
+... annotation_json = download_file("https://neurostore.org/api/annotations/76PyNqoTNEsE")
+... 
+KeyboardInterrupt
+>>> from requests import request
+>>> def download_file(url):
+...     response = request("GET", url)
+...     return response.json()
+... 
+... studyset_json = download_file("https://neurostore.org/api/studysets/Cv2LLUqG76W9?nested=true")
+... 
+KeyboardInterrupt
+>>> from request import requests 
+Traceback (most recent call last):
+  File "<python-input-2>", line 1, in <module>
+    from request import requests
+ModuleNotFoundError: No module named 'request'
+>>> def download_file(url):
+...     response = request("GET", url)
+...     return response.json()
+...     
+>>> 
+>>> 
+>>> studyset_json = download_file("https://neurostore.org/api/studysets/Cv2LLUqG76W9?nested=true")
+>>> annotation_json = download_file("https://neurostore.org/api/annotations/76PyNqoTNEsE")
+>>> print(type(studyset_json))
+<class 'dict'>
+>>> from nimare.nimads import Studyset
+... 
+... studyset = Studyset.from_neurostore(
+...     studyset_json,
+...     annotation_json
+... )
+... 
+Traceback (most recent call last):
+  File "<python-input-9>", line 1, in <module>
+    from nimare.nimads import Studyset
+ModuleNotFoundError: No module named 'nimare'
+>>> annotation_json = download_file(
+...     "https://neurostore.org/api/annotations/76PyNqoTNEsE"
+... )
+>>> from nimare.meta.cbma import ALE
+... 
+... ale = ALE()
+... results = ale.fit(studyset)
+... 
+Traceback (most recent call last):
+  File "<python-input-11>", line 1, in <module>
+    from nimare.meta.cbma import ALE
+ModuleNotFoundError: No module named 'nimare'
+>>> exit
+(base) anuschkabergmann@mac ~ % conda activate nimare_env
+
+EnvironmentNameNotFound: Could not find conda environment: nimare_env
+You can list all discoverable environments with `conda info --envs`.
+
+
+(base) anuschkabergmann@mac ~ % nimare
+zsh: command not found: nimare
+(base) anuschkabergmann@mac ~ % pip show nimare
+WARNING: Package(s) not found: nimare
+(base) anuschkabergmann@mac ~ % conda create -n nimare_env python=3.10 -y
+2 channel Terms of Service accepted
+Retrieving notices: done
+Channels:
+ - defaults
+Platform: osx-arm64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 25.11.0
+    latest version: 26.3.2
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /opt/anaconda3/envs/nimare_env
+
+  added / updated specs:
+    - python=3.10
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2026.3.19  |       hca03da5_0         126 KB
+    libcxx-22.1.2              |       hf894667_0         309 KB
+    libexpat-2.7.5             |       h50f4ffc_0         108 KB
+    libffi-3.4.8               |       hcfc0b96_2         116 KB
+    libzlib-1.3.1              |       hb4cf58c_1          44 KB
+    openssl-3.5.6              |       ha0b305a_0         4.6 MB
+    packaging-26.0             |  py310hca03da5_0         166 KB
+    pip-26.0.1                 |     pyhc872135_1         1.1 MB
+    python-3.10.20             |       h4f1bc5c_0        12.3 MB
+    setuptools-82.0.1          |  py310hca03da5_0         1.2 MB
+    sqlite-3.51.2              |       h67002bf_0         1.1 MB
+    tzdata-2026a               |       he532380_0         117 KB
+    wheel-0.46.3               |  py310hca03da5_0          54 KB
+    xz-5.8.2                   |       h8bbcb1d_0         263 KB
+    zlib-1.3.1                 |       hb4cf58c_1          74 KB
+    ------------------------------------------------------------
+                                           Total:        21.8 MB
+
+The following NEW packages will be INSTALLED:
+
+  bzip2              pkgs/main/osx-arm64::bzip2-1.0.8-h80987f9_6 
+  ca-certificates    pkgs/main/osx-arm64::ca-certificates-2026.3.19-hca03da5_0 
+  libcxx             pkgs/main/osx-arm64::libcxx-22.1.2-hf894667_0 
+  libexpat           pkgs/main/osx-arm64::libexpat-2.7.5-h50f4ffc_0 
+  libffi             pkgs/main/osx-arm64::libffi-3.4.8-hcfc0b96_2 
+  libzlib            pkgs/main/osx-arm64::libzlib-1.3.1-hb4cf58c_1 
+  ncurses            pkgs/main/osx-arm64::ncurses-6.5-hee39554_0 
+  openssl            pkgs/main/osx-arm64::openssl-3.5.6-ha0b305a_0 
+  packaging          pkgs/main/osx-arm64::packaging-26.0-py310hca03da5_0 
+  pip                pkgs/main/noarch::pip-26.0.1-pyhc872135_1 
+  python             pkgs/main/osx-arm64::python-3.10.20-h4f1bc5c_0 
+  readline           pkgs/main/osx-arm64::readline-8.3-h0b18652_0 
+  setuptools         pkgs/main/osx-arm64::setuptools-82.0.1-py310hca03da5_0 
+  sqlite             pkgs/main/osx-arm64::sqlite-3.51.2-h67002bf_0 
+  tk                 pkgs/main/osx-arm64::tk-8.6.15-hcd8a7d5_0 
+  tzdata             pkgs/main/noarch::tzdata-2026a-he532380_0 
+  wheel              pkgs/main/osx-arm64::wheel-0.46.3-py310hca03da5_0 
+  xz                 pkgs/main/osx-arm64::xz-5.8.2-h8bbcb1d_0 
+  zlib               pkgs/main/osx-arm64::zlib-1.3.1-hb4cf58c_1 
+
+
+
+Downloading and Extracting Packages:
+                                                                                                                                                                                                            
+Preparing transaction: done                                                                                                                                                                                 
+Verifying transaction: done                                                                                                                                                                                 
+Executing transaction: done                                                                                                                                                                                 
+#                                                                                                                                                                                                           
+# To activate this environment, use                                                                                                                                                                         
+#                                                                                                                                                                                                           
+#     $ conda activate nimare_env                                                                                                                                                                           
+#                                                                                                                                                                                                           
+# To deactivate an active environment, use                                                                                                                                                                  
+#                                                                                                                                                                                                           
+#     $ conda deactivate                                                                                                                                                                                    
+                                                                                                                                                                                                            
+(base) anuschkabergmann@mac ~ % conda activate nimare_env
+(nimare_env) anuschkabergmann@mac ~ % conda install -c conda-forge nimare -y
+2 channel Terms of Service accepted
+Channels:
+ - conda-forge
+ - defaults
+Platform: osx-arm64
+Collecting package metadata (repodata.json): done
+Solving environment: failed
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - nimare
+
+Current channels:
+
+  - https://conda.anaconda.org/conda-forge
+  - defaults
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(nimare_env) anuschkabergmann@mac ~ % python -c "import nimare; print(nimare.__version__)"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'nimare'
+(nimare_env) anuschkabergmann@mac ~ % python -c "import nimare; print(nimare.__version__)"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'nimare'
+(nimare_env) anuschkabergmann@mac ~ % conda install -c conda-forge nimare -y
+2 channel Terms of Service accepted
+Channels:
+ - conda-forge
+ - defaults
+Platform: osx-arm64
+Collecting package metadata (repodata.json): done
+Solving environment: failed
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - nimare
+
+Current channels:
+
+  - https://conda.anaconda.org/conda-forge
+  - defaults
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(nimare_env) anuschkabergmann@mac ~ % python -c "import nimare; print(nimare.__version__)"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'nimare'
+(nimare_env) anuschkabergmann@mac ~ % pip install nimare
+Collecting nimare
+  Downloading nimare-0.16.0-py3-none-any.whl.metadata (4.9 kB)
+Collecting cognitiveatlas>=0.1.11 (from nimare)
+  Downloading cognitiveatlas-0.1.11-py3-none-any.whl.metadata (400 bytes)
+Collecting fuzzywuzzy (from nimare)
+  Downloading fuzzywuzzy-0.18.0-py2.py3-none-any.whl.metadata (4.9 kB)
+Collecting jinja2 (from nimare)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting joblib>=1.3.0 (from nimare)
+  Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting matplotlib>=3.6.0 (from nimare)
+  Downloading matplotlib-3.10.9-cp310-cp310-macosx_11_0_arm64.whl.metadata (52 kB)
+Collecting nibabel>=5.2.0 (from nimare)
+  Downloading nibabel-5.4.2-py3-none-any.whl.metadata (8.9 kB)
+Collecting nilearn<0.14,>=0.12.0 (from nimare)
+  Downloading nilearn-0.13.1-py3-none-any.whl.metadata (12 kB)
+Collecting numba>=0.57.0 (from nimare)
+  Downloading numba-0.65.1-cp310-cp310-macosx_12_0_arm64.whl.metadata (2.9 kB)
+Collecting numpy>=1.22.4 (from nimare)
+  Downloading numpy-2.2.6-cp310-cp310-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting pandas>=2.1.4 (from nimare)
+  Downloading pandas-2.3.3-cp310-cp310-macosx_11_0_arm64.whl.metadata (91 kB)
+Collecting patsy (from nimare)
+  Downloading patsy-1.0.2-py2.py3-none-any.whl.metadata (3.6 kB)
+Collecting plotly (from nimare)
+  Downloading plotly-6.7.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting pymare>=0.0.8 (from nimare)
+  Downloading PyMARE-0.0.10-py3-none-any.whl.metadata (4.0 kB)
+Collecting pyyaml (from nimare)
+  Downloading pyyaml-6.0.3-cp310-cp310-macosx_11_0_arm64.whl.metadata (2.4 kB)
+Collecting requests (from nimare)
+  Downloading requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+Collecting ridgeplot (from nimare)
+  Downloading ridgeplot-0.6.0-py3-none-any.whl.metadata (10 kB)
+Collecting scikit-learn>=1.0.0 (from nimare)
+  Downloading scikit_learn-1.7.2-cp310-cp310-macosx_12_0_arm64.whl.metadata (11 kB)
+Collecting scipy>=1.8.0 (from nimare)
+  Downloading scipy-1.15.3-cp310-cp310-macosx_14_0_arm64.whl.metadata (61 kB)
+Collecting sparse>=0.13.0 (from nimare)
+  Downloading sparse-0.17.0-py2.py3-none-any.whl.metadata (5.3 kB)
+Collecting statsmodels!=0.13.2 (from nimare)
+  Downloading statsmodels-0.14.6-cp310-cp310-macosx_11_0_arm64.whl.metadata (9.5 kB)
+Collecting tqdm (from nimare)
+  Downloading tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+Requirement already satisfied: packaging in /opt/anaconda3/envs/nimare_env/lib/python3.10/site-packages (from nilearn<0.14,>=0.12.0->nimare) (26.0)
+Collecting MarkupSafe>=2.0 (from jinja2->nimare)
+  Downloading markupsafe-3.0.3-cp310-cp310-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Collecting contourpy>=1.0.1 (from matplotlib>=3.6.0->nimare)
+  Downloading contourpy-1.3.2-cp310-cp310-macosx_11_0_arm64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib>=3.6.0->nimare)
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib>=3.6.0->nimare)
+  Downloading fonttools-4.62.1-cp310-cp310-macosx_10_9_universal2.whl.metadata (117 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib>=3.6.0->nimare)
+  Downloading kiwisolver-1.5.0-cp310-cp310-macosx_11_0_arm64.whl.metadata (5.1 kB)
+Collecting pillow>=8 (from matplotlib>=3.6.0->nimare)
+  Downloading pillow-12.2.0-cp310-cp310-macosx_11_0_arm64.whl.metadata (8.8 kB)
+Collecting pyparsing>=3 (from matplotlib>=3.6.0->nimare)
+  Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting python-dateutil>=2.7 (from matplotlib>=3.6.0->nimare)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting importlib-resources>=5.12 (from nibabel>=5.2.0->nimare)
+  Downloading importlib_resources-7.1.0-py3-none-any.whl.metadata (4.0 kB)
+Collecting typing-extensions>=4.6 (from nibabel>=5.2.0->nimare)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting llvmlite<0.48,>=0.47.0dev0 (from numba>=0.57.0->nimare)
+  Downloading llvmlite-0.47.0-cp310-cp310-macosx_11_0_arm64.whl.metadata (5.0 kB)
+Collecting pytz>=2020.1 (from pandas>=2.1.4->nimare)
+  Downloading pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas>=2.1.4->nimare)
+  Downloading tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting sympy (from pymare>=0.0.8->nimare)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting wrapt (from pymare>=0.0.8->nimare)
+  Downloading wrapt-2.1.2-cp310-cp310-macosx_11_0_arm64.whl.metadata (7.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib>=3.6.0->nimare)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting charset_normalizer<4,>=2 (from requests->nimare)
+  Downloading charset_normalizer-3.4.7-cp310-cp310-macosx_10_9_universal2.whl.metadata (40 kB)
+Collecting idna<4,>=2.5 (from requests->nimare)
+  Downloading idna-3.13-py3-none-any.whl.metadata (8.0 kB)
+Collecting urllib3<3,>=1.26 (from requests->nimare)
+  Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2023.5.7 (from requests->nimare)
+  Downloading certifi-2026.4.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting threadpoolctl>=3.1.0 (from scikit-learn>=1.0.0->nimare)
+  Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Collecting narwhals>=1.15.1 (from plotly->nimare)
+  Downloading narwhals-2.20.0-py3-none-any.whl.metadata (15 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy->pymare>=0.0.8->nimare)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Downloading nimare-0.16.0-py3-none-any.whl (14.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.0/14.0 MB 8.6 MB/s  0:00:01
+Downloading nilearn-0.13.1-py3-none-any.whl (10.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 20.1 MB/s  0:00:00
+Downloading cognitiveatlas-0.1.11-py3-none-any.whl (7.1 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+Downloading markupsafe-3.0.3-cp310-cp310-macosx_11_0_arm64.whl (12 kB)
+Downloading matplotlib-3.10.9-cp310-cp310-macosx_11_0_arm64.whl (8.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB 20.8 MB/s  0:00:00
+Downloading contourpy-1.3.2-cp310-cp310-macosx_11_0_arm64.whl (253 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.62.1-cp310-cp310-macosx_10_9_universal2.whl (2.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.9/2.9 MB 17.2 MB/s  0:00:00
+Downloading kiwisolver-1.5.0-cp310-cp310-macosx_11_0_arm64.whl (63 kB)
+Downloading nibabel-5.4.2-py3-none-any.whl (3.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 20.9 MB/s  0:00:00
+Downloading importlib_resources-7.1.0-py3-none-any.whl (37 kB)
+Downloading numba-0.65.1-cp310-cp310-macosx_12_0_arm64.whl (2.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 21.1 MB/s  0:00:00
+Downloading llvmlite-0.47.0-cp310-cp310-macosx_11_0_arm64.whl (37.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 37.2/37.2 MB 19.5 MB/s  0:00:01
+Downloading numpy-2.2.6-cp310-cp310-macosx_14_0_arm64.whl (5.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 22.2 MB/s  0:00:00
+Downloading pandas-2.3.3-cp310-cp310-macosx_11_0_arm64.whl (10.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 22.9 MB/s  0:00:00
+Downloading pillow-12.2.0-cp310-cp310-macosx_11_0_arm64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 19.8 MB/s  0:00:00
+Downloading PyMARE-0.0.10-py3-none-any.whl (37 kB)
+Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+Downloading requests-2.33.1-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.7-cp310-cp310-macosx_10_9_universal2.whl (315 kB)
+Downloading idna-3.13-py3-none-any.whl (68 kB)
+Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+Downloading certifi-2026.4.22-py3-none-any.whl (135 kB)
+Downloading scikit_learn-1.7.2-cp310-cp310-macosx_12_0_arm64.whl (8.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.7/8.7 MB 18.3 MB/s  0:00:00
+Downloading scipy-1.15.3-cp310-cp310-macosx_14_0_arm64.whl (22.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22.4/22.4 MB 18.4 MB/s  0:00:01
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading sparse-0.17.0-py2.py3-none-any.whl (259 kB)
+Downloading statsmodels-0.14.6-cp310-cp310-macosx_11_0_arm64.whl (10.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.0/10.0 MB 18.8 MB/s  0:00:00
+Downloading patsy-1.0.2-py2.py3-none-any.whl (233 kB)
+Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+Downloading fuzzywuzzy-0.18.0-py2.py3-none-any.whl (18 kB)
+Downloading plotly-6.7.0-py3-none-any.whl (9.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.9/9.9 MB 22.1 MB/s  0:00:00
+Downloading narwhals-2.20.0-py3-none-any.whl (449 kB)
+Downloading pyyaml-6.0.3-cp310-cp310-macosx_11_0_arm64.whl (174 kB)
+Downloading ridgeplot-0.6.0-py3-none-any.whl (57 kB)
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 21.9 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 15.3 MB/s  0:00:00
+Downloading tqdm-4.67.3-py3-none-any.whl (78 kB)
+Downloading wrapt-2.1.2-cp310-cp310-macosx_11_0_arm64.whl (61 kB)
+Installing collected packages: pytz, mpmath, fuzzywuzzy, wrapt, urllib3, tzdata, typing-extensions, tqdm, threadpoolctl, sympy, six, pyyaml, pyparsing, pillow, numpy, narwhals, MarkupSafe, llvmlite, kiwisolver, joblib, importlib-resources, idna, fonttools, cycler, charset_normalizer, certifi, scipy, requests, python-dateutil, plotly, patsy, numba, nibabel, jinja2, contourpy, sparse, scikit-learn, pandas, matplotlib, statsmodels, pymare, nilearn, cognitiveatlas, ridgeplot, nimare
+Successfully installed MarkupSafe-3.0.3 certifi-2026.4.22 charset_normalizer-3.4.7 cognitiveatlas-0.1.11 contourpy-1.3.2 cycler-0.12.1 fonttools-4.62.1 fuzzywuzzy-0.18.0 idna-3.13 importlib-resources-7.1.0 jinja2-3.1.6 joblib-1.5.3 kiwisolver-1.5.0 llvmlite-0.47.0 matplotlib-3.10.9 mpmath-1.3.0 narwhals-2.20.0 nibabel-5.4.2 nilearn-0.13.1 nimare-0.16.0 numba-0.65.1 numpy-2.2.6 pandas-2.3.3 patsy-1.0.2 pillow-12.2.0 plotly-6.7.0 pymare-0.0.10 pyparsing-3.3.2 python-dateutil-2.9.0.post0 pytz-2026.1.post1 pyyaml-6.0.3 requests-2.33.1 ridgeplot-0.6.0 scikit-learn-1.7.2 scipy-1.15.3 six-1.17.0 sparse-0.17.0 statsmodels-0.14.6 sympy-1.14.0 threadpoolctl-3.6.0 tqdm-4.67.3 typing-extensions-4.15.0 tzdata-2026.2 urllib3-2.6.3 wrapt-2.1.2
+(nimare_env) anuschkabergmann@mac ~ % pip install --trusted-host pypi.org nimarepython -c "import nimare; print(nimare.__version__)"
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'import nimare; print(nimare.__version__)'
+(nimare_env) anuschkabergmann@mac ~ % python -c "import nimare; print(nimare.__version__)"
+python
+
+python
+WARNING:matplotlib.font_manager:Matplotlib is building the font cache; this may take a moment.
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/SFIndia.ttc: Can not load face (SFNT font table missing; error code 0x8e)
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/LastResort.otf: tuple indices must be integers or slices, not str
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/Apple Color Emoji.ttc: Could not set the fontsize (invalid pixel size; error code 0x17)
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc: Can not load face (locations (loca) table missing; error code 0x90)
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/Supplemental/NISC18030.ttf: Could not set the fontsize (invalid pixel size; error code 0x17)
+INFO:matplotlib.font_manager:generated new fontManager
+0.16.0
+(nimare_env) anuschkabergmann@mac ~ % python
+Python 3.10.20 (main, Mar 11 2026, 17:43:48) [Clang 20.1.8 ] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> python
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'python' is not defined
+>>> pip install --trusted-host pypi.org nimarepython -c "import nimare; print(nimare.__version__)"
+  File "<stdin>", line 1
+    pip install --trusted-host pypi.org nimarepython -c "import nimare; print(nimare.__version__)"
+        ^^^^^^^
+SyntaxError: invalid syntax
+>>> from requests import request
+>>> from nimare.nimads import Studyset
+from nimare.meta.cbma import ALE
+>>> from nimare.meta.cbma import ALE
+>>> def download_file(url):
+...     response = request("GET", url)
+...     return response.json()
+... studyset_json = download_file(
+  File "<stdin>", line 4
+    studyset_json = download_file(
+    ^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+>>>     "https://neurostore.org/api/studysets/Cv2LLUqG76W9?nested=true"
+  File "<stdin>", line 1
+    "https://neurostore.org/api/studysets/Cv2LLUqG76W9?nested=true"
+IndentationError: unexpected indent
+>>> )
+  File "<stdin>", line 1
+    )
+    ^
+SyntaxError: unmatched ')'
+>>> 
+>>> annotation_json = download_file(
+...     "https://neurostore.org/api/annotations/76PyNqoTNEsE"
+... )
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'download_file' is not defined
+>>> from requests import request
+>>> def download_file(url):
+...     response = request("GET", url)
+...     return response.json()
+... 
+>>> studyset_json = download_file(
+...     "https://neurostore.org/api/studysets/Cv2LLUqG76W9?nested=true"
+... )
+>>> print(type(studyset_json))
+<class 'dict'>
+>>> from nimare.nimads import Studyset
+>>> from nimare.meta.cbma import ALE
+>>> from requests import request
+>>> 
+>>> def download_file(url):
+...     response = request("GET", url)
+...     return response.json()
+... 
+>>> annotation_json = download_file(
+...     "https://neurostore.org/api/annotations/76PyNqoTNEsE"
+... )
+>>> studyset = Studyset.from_neurostore(
+...     studyset_json,
+...     annotation_json
+... )
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: type object 'Studyset' has no attribute 'from_neurostore'
+>>> import nimare
+>>> print(nimare.__version__)
+0.16.0
+>>> print(studyset_json.keys())
+dict_keys(['id', 'name', 'user', 'description', 'publication', 'doi', 'pmid', 'created_at', 'updated_at', 'studies', 'studyset_studies'])
+>>> print(annotation_json.keys())
+dict_keys(['id', 'user', 'username', 'created_at', 'updated_at', 'studyset', 'notes', 'source', 'source_id', 'source_updated_at', 'note_keys', 'metadata', 'name', 'description'])
+>>> from nimare.nimads import Studyset
+>>> 
+>>> studyset = Studyset()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: Studyset.__init__() missing 1 required positional argument: 'source'
+>>> from nimare.nimads import Studyset
+>>> print(dir(Studyset))
+['__class__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_attach_dataset_context', '_cache_key', '_coerce_annotation', '_collect_analysis_points', '_copy_execution_profile', '_copy_table_cache', '_current_store', '_ensure_store_synced', '_extend_annotations', '_flatten_analysis_annotations', '_from_store', '_generic_column_getter', '_get_projected_table_cache', '_get_raw_table_cache', '_id_cols', '_initialize_from_store', '_install_mutation_tracking', '_iter_analyses', '_iter_selected_analyses', '_mark_dirty', '_selection_key', '_set_execution_context', '_set_projected_table', '_source_dict_from_materialized', 'annotations', 'annotations_df', 'basepath', 'combine_analyses', 'coordinates', 'copy', 'exclude_study_ids', 'filter_annotations', 'filter_ids', 'filter_metadata', 'filter_study_ids', 'from_dataset', 'from_nimads', 'from_sleuth', 'from_table_cache', 'get', 'get_analyses_by_annotations', 'get_analyses_by_coordinate', 'get_analyses_by_label', 'get_analyses_by_mask', 'get_analyses_by_metadata', 'get_annotations', 'get_images', 'get_labels', 'get_metadata', 'get_points', 'get_studies_by_coordinate', 'get_studies_by_label', 'get_studies_by_mask', 'get_texts', 'ids', 'images', 'is_execution_ready', 'is_materialized', 'load', 'masker', 'materialize', 'merge', 'metadata', 'save', 'set_annotations_df', 'slice', 'space', 'studies', 'study_ids', 'texts', 'to_dataset', 'to_dict', 'to_nimads', 'touch', 'update_path']
+>>> studyset = Studyset(
+...     source=studyset_json
+... )
+WARNING:nimare.utils:Not applying transforms to coordinates in unrecognized space 'None'
+>>> from nimare.meta.cbma import ALE
+>>> ale = ALE()
+>>> results = ale.fit(studyset)
+>>> results.save_maps("ale_results/")
+>>> 
